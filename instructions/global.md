@@ -6,7 +6,8 @@
 - Comment sparingly. A comment carries what the code cannot: a non-obvious invariant, an outside constraint, or a note that something looks wrong but is not.
 - Say it once. A rule lives in one place and everything else links to it.
 - Write it in the repo, not only in an agent memory. A memory is invisible to every other contributor and tool.
-- Inspect before modifying. Preserve unrelated work. Use the simplest complete solution, reuse existing patterns, avoid repeated logic, and extract complex logic into small, named, typed helpers. Correctness, security, reliability, accessibility, observability, and maintainability are requirements.
+- Inspect before modifying. Preserve unrelated work. Use the simplest complete solution, reuse existing patterns and the repository's project skills, avoid repeated logic, and extract complex logic into small, named, typed helpers. Correctness, security, reliability, accessibility, observability, and maintainability are requirements.
+- After a meaningful workflow succeeds, weigh once whether it becomes a tested, reusable project capability; the `capabilities` skill's `extraction` reference holds the decision. Never turn a one-off into a script.
 - Keep source files focused and under roughly 500 lines, split by responsibility, unless the repository sets its own limit. Pin dependencies and add one only when a need is concrete.
 - When stuck, state one problem, three options, and one recommendation. Wait for confirmation before implementing an option.
 - Ship application fixes forward without backward compatibility. Configuration migration backups may be restored safely.

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 200" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13.5" fill="#8b949e" text-anchor="middle">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <g stroke="#8b949e" fill="#8b949e" fill-opacity="0.08">
+    <rect x="16" y="76" width="150" height="48" rx="6" stroke-width="1.2"/>
+    <rect x="250" y="48" width="180" height="40" rx="6" stroke-width="1.2"/>
+    <rect x="250" y="112" width="180" height="40" rx="6" stroke-width="1.2"/>
+    <rect x="514" y="76" width="150" height="48" rx="6" stroke-width="1.2"/>
+  </g>
+  <g stroke="#8b949e" stroke-width="1.2" fill="none" marker-end="url(#a)">
+    <line x1="166" y1="100" x2="246" y2="68"/>
+    <line x1="166" y1="100" x2="246" y2="132"/>
+    <line x1="430" y1="68" x2="510" y2="96"/>
+    <line x1="430" y1="132" x2="510" y2="104"/>
+  </g>
+  <text x="91" y="105">One repository</text>
+  <text x="340" y="73">Skills and subagents</text>
+  <text x="340" y="137">Plugins</text>
+  <text x="589" y="98">Every coding agent</text>
+  <text x="589" y="116">you run</text>
+</svg>
