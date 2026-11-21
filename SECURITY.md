@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Report a vulnerability privately through a [GitHub security advisory](https://github.com/VladButacu/agentkit/security/advisories/new), or by email to vladbutacu@gmail.com. Do not open a public issue for it.
+Report a vulnerability privately through a [GitHub security advisory](https://github.com/VladButacu/agentkit/security/advisories/new). Do not open a public issue for it.
 
 Include what you found, how to reproduce it, and what an attacker could do with it.
 
