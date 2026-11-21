@@ -2,14 +2,14 @@
 
 Several skills can apply to one task. Their kind decides how many run at once.
 
-Agentkit's own skills are domain routers: `design`, `engineering`, `writing`, `inquiry`, `repo-ops` and `vault`. Each router's `references/` holds the leaves, and the kinds below name leaves, not routers. A router never counts as a workflow. The leaf it routes to does.
+Agentkit's own skills are domain routers: `design`, `engineering`, `writing`, `inquiry`, `capabilities`, `repo-ops` and `vault`. Each router's `references/` holds the leaves, and the kinds below name leaves, not routers. A router never counts as a workflow. The leaf it routes to does.
 
 | Kind | Active at once | Governs | References |
 | --- | --- | --- | --- |
 | Workflow | One | Which steps run, and in what order | `brainstorming`, `writing-plans`, `executing-plans`, `desloppify`, `research`, `retro`, `ship`, `vault-dream` |
 | Discipline | Any | A rule a step must satisfy before it ends | `tdd`, `debugging`, `verification`, `receiving-review` |
 | Mode | Any | The size and form of each output | `ponytail` for code, `prose` for text a person reads, `writing-for-agents` for text an agent reads |
-| Tool | Any | One bounded job inside a step | `codebase-design`, `domain-modeling`, `to-tickets`, `release-notes`, `branch-hygiene`, `repo-bootstrap`, `makefile-generator`, `pyproject-generator`, the vault references, including `vault-prune` |
+| Tool | Any | One bounded job inside a step | `codebase-design`, `domain-modeling`, `to-tickets`, `release-notes`, `branch-hygiene`, `repo-bootstrap`, `makefile-generator`, `pyproject-generator`, `reuse`, `extraction`, `registry`, the vault references, including `vault-prune` |
 
 The user's instructions and `AGENTS.md` come first. Below them, a workflow decides which steps run, a discipline decides when a step may end, and a mode decides how large each step's output is. A mode never removes a workflow step or a discipline, and a workflow never grows an output past what the mode allows.
 
@@ -31,6 +31,7 @@ The user's instructions and `AGENTS.md` come first. Below them, a workflow decid
 | A change alters no behavior (a rename, a comment, a config value nothing reads, copy) | No new test |
 | "Review this" outside a plan | `ponytail-review` |
 | Review inside an executed plan | `executing-plans`, with its fresh `blind-reviewer` per task |
+| Work that alters behavior or ships new surface is about to be reported done | `verification`, whose independent review dispatches a fresh `blind-reviewer` |
 | A one-off codebase audit | `ponytail-audit` |
 | A tracked cleanup with a scored queue | `desloppify` |
 | New or unclear work, or pressure-testing an existing plan | `brainstorming` |
@@ -41,6 +42,7 @@ The user's instructions and `AGENTS.md` come first. Below them, a workflow decid
 | Creating or changing a skill | `writing-for-agents`, for wording, invocation and testing the skill against a baseline |
 | A session that went wrong | `retro`, for evidence with `path:line` and setup changes |
 | A research question | `vault-recall`, then `research` |
+| Repeated deterministic work, or a finished workflow worth keeping as reusable code | `reuse` before the work, `extraction` after it |
 
 Claude Code's own `/code-review`, `/simplify` and `deep-research` run only when the user names them.
 
@@ -48,7 +50,7 @@ Claude Code's own `/code-review`, `/simplify` and `deep-research` run only when 
 
 | Subagent | Dispatched by | What the separate context buys |
 | --- | --- | --- |
-| `blind-reviewer` | `prose` for its final review, `desloppify` for blind scoring, `vault-lint` for its judgement checks, `brainstorming` for a cold read of a design, `executing-plans` for each task and the final review | A judgement of the artifact against a rubric, made without the author's conversation and with read-only tools |
+| `blind-reviewer` | `prose` for its final review, `desloppify` for blind scoring, `vault-lint` for its judgement checks, `brainstorming` for a cold read of a design, `executing-plans` for each task and the final review, `verification` for the review before a done claim | A judgement of the artifact against a rubric, made without the author's conversation and with read-only tools |
 | `scout` | `retro` for session logs, `to-tickets` for the current state of the code, `vault-recall` for a wide search, `vault-prune` for claim checks across many notes, `vault-dream` for a long digest | Raw reads stay out of the caller's context, and only a cited summary returns |
 
 `research` and `codebase-design` dispatch their own agents, so they keep each tool's general-purpose agent.

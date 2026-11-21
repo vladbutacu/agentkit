@@ -22,6 +22,10 @@ Words that signal a skipped check: "should", "probably", "seems to", "looks righ
 | Delegated work is done | The diff, read by you | The agent's report |
 | Requirements met | Each requirement checked against the result | Tests pass |
 
+## Independent review
+
+A change that alters behavior or ships a new surface gets one more judge: dispatch a fresh `blind-reviewer` with the task's requirements as its rubric, and read its findings before the done claim. The reviewer sees the work, not the conversation that produced it. When the subagent is not installed, reread the work cold against the requirements and apply the same rubric yourself.
+
 ## Regression test cycle
 
 Write the test and see it pass. Revert the fix and see the test fail. Restore the fix and see it pass. A test that stays green with the fix removed does not guard anything.
