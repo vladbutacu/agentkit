@@ -88,6 +88,14 @@ class CapabilityTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn("status: verified", (self.store / "deploy" / "SKILL.md").read_text())
 
+    def test_split_command_keeps_windows_paths(self):
+        raw = r"C:\tools\check.bat -c 'import sys; sys.exit(0)'"
+        self.assertEqual(
+            capability.split_command(raw, windows=True),
+            [r"C:\tools\check.bat", "-c", "import sys; sys.exit(0)"],
+        )
+        self.assertEqual(capability.split_command("a 'b c'"), ["a", "b c"])
+
     def test_test_command_overrides_unittest(self):
         make_cap(self.store, "shellcap", test_command=f"{sys.executable} -c 'import sys; sys.exit(0)'")
         self.assertEqual(capability.main(["--root", str(self.root), "test", "shellcap"]), 0)

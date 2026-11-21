@@ -123,13 +123,21 @@ def scan_secrets(path: Path) -> list[str]:
             continue
         for pattern in SECRET_PATTERNS:
             if pattern.search(text):
-                hits.append(f"{file.relative_to(path)} matches {pattern.pattern}")
+                hits.append(str(file.relative_to(path)))
+                break
     return hits
+
+
+def split_command(command: str, windows: bool = os.name == "nt") -> list[str]:
+    """Split a test-command into argv, keeping backslash paths intact on Windows."""
+    if windows:
+        return [token.strip("\"'") for token in shlex.split(command, posix=False)]
+    return shlex.split(command)
 
 
 def run_tests(path: Path, test_command: str = "") -> tuple[bool, str]:
     if test_command:
-        argv = shlex.split(test_command)
+        argv = split_command(test_command)
         if not argv:
             return False, "empty test-command"
         proc = subprocess.run(argv, cwd=path, capture_output=True, text=True, check=False)
