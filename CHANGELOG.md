@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.0](https://github.com/vladbutacu/agentkit/compare/v0.12.0...v0.13.0) (2026-11-21)
+
+
+### Features
+
+* add the capabilities skill with routing and README fixes ([#33](https://github.com/vladbutacu/agentkit/issues/33)) ([effa0d9](https://github.com/vladbutacu/agentkit/commit/effa0d92aea1976a0ca88cda4edd5a3994bf46d4))
+
 ## [0.12.0](https://github.com/VladButacu/agentkit/compare/v0.11.0...v0.12.0) (2026-11-20)
 
 
