@@ -218,10 +218,8 @@ def cmd_promote(args: argparse.Namespace) -> int:
     if cap.side_effects == "beyond-repo" and not args.reviewed:
         print(f"{cap.name}: acts beyond the repository; promote needs the user's --reviewed")
         return 1
-    secrets = scan_secrets(cap.path)
-    if secrets:
-        for hit in secrets:
-            print(f"{cap.name}: secret-looking material in {hit}")
+    if scan_secrets(cap.path):
+        print(f"{cap.name}: secret-looking material in the capability folder; find and remove it before promoting")
         return 1
     ok, detail = run_tests(cap.path, cap.test_command)
     if not ok:
