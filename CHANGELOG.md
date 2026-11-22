@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/vladbutacu/agentkit/compare/v0.13.0...v0.14.0) (2026-11-22)
+
+
+### Features
+
+* **vault-capture:** gate ADD on a nameable future task ([#36](https://github.com/vladbutacu/agentkit/issues/36)) ([995d443](https://github.com/vladbutacu/agentkit/commit/995d443f3b64728a5fc13a3e1fe6b44addce60ea))
+
 ## [0.13.0](https://github.com/vladbutacu/agentkit/compare/v0.12.0...v0.13.0) (2026-11-21)
 
 
