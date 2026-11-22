@@ -1,7 +1,7 @@
 ---
 name: capabilities
 description: >-
-  Use when deterministic work repeats: to find and reuse the repository's tested capabilities before doing it again, to decide after a meaningful workflow whether it becomes one, and when running a capability command or checking the store's health. Skip one-off actions and single reads.
+  Use when deterministic work repeats: to find and reuse the repository's tested capabilities before doing it again, to decide after a meaningful workflow whether it becomes one, and when running a capability command or checking the store's health. Skip single reads. The close-out decision always runs, and a one-off resolves to `SKIP` or `NOTE` there.
 metadata:
   opencode/autoinvoke: true
 ---
