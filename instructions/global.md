@@ -14,7 +14,7 @@
 - Propose changes to rules when requirements, architecture, or documentation conflict. Get confirmation before updating existing rules files.
 - Test first for behavior changes. A bug fix gets a regression test at the lowest layer that observes it.
 - For new or unclear work, get the design approved before writing code. Find the root cause before fixing a bug, and stop to rethink after three failed fixes. In review, check feedback against the code and answer with the fix or the evidence, never with agreement alone.
-- Claim work done, fixed or passing only on evidence from this turn. Run the repository's verification gate before reporting work done. CI confirms a green build; it does not discover it. A check that cannot fail is not a check.
+- Claim work done, fixed or passing only on evidence from this turn. Run the repository's verification gate and the capabilities extraction decision before reporting work done. CI confirms a green build; it does not discover it. A check that cannot fail is not a check.
 - When a gate fails, save its output once and rerun the failing case alone before changing anything.
 - Start services through the repository's own commands, confirm readiness from its logs before using it, and stop only what you started. Never kill processes by generic name.
 - Use repository Makefile targets when available. Inspect existing tests before changing backend behavior, agree the proposed test with the user, and follow existing test patterns. Explicit task-specific instructions can change this requirement.

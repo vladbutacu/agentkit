@@ -9,7 +9,8 @@ Words that signal a skipped check: "should", "probably", "seems to", "looks righ
 2. Run each in full, now.
 3. Read the output and the exit code.
 4. State what it shows, including failures.
-5. Only then claim the result.
+5. Run the capabilities extraction decision for anything this session wrote or repeated. The `capabilities` skill's `extraction` reference holds the decision.
+6. Only then claim the result.
 
 ## What proves what
 
