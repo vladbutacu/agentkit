@@ -61,13 +61,13 @@ class InstallerFixture(unittest.TestCase):
         self.codex = self.home / ".codex"
         self.codex.mkdir()
         (self.codex / "config.toml").write_text(
-            'approval_policy = "on-request"\n[plugins."ponytail@test"]\nenabled = true\n[plugins."fex@test"]\nenabled = true\n'
+            'approval_policy = "on-request"\n[plugins."ponytail@test"]\nenabled = true\n'
         )
         self.claude = self.home / ".claude"
         self.put(self.claude / "settings.json", {
             "permissions": {"deny": ["Bash(git push *)"]},
             "skillOverrides": {"prose": "off", "other": "off"},
-            "enabledPlugins": {"ponytail@test": True, "fex@test": True},
+            "enabledPlugins": {"ponytail@test": True},
         })
         self.config = self.home / ".config"
         self.put(self.config / "opencode/opencode.json", {"permissions": [{"effect": "deny"}], "mcp": {"servers": {}}})
@@ -129,10 +129,6 @@ class InstallationChecks(InstallerFixture):
         self.assertTrue(actions.is_link(self.home / ".kiro/skills/prose"))
         self.assertTrue(actions.is_link(self.home / ".kilo/skills/ponytail"))
         self.assertFalse((self.home / ".kilo/skills/prose").exists())
-        # Marketplace-only plugins get no local checkout and no loose skill links.
-        self.assertNotIn("fex", self.sources)
-        self.assertFalse((self.home / ".kiro/skills/fex").exists())
-        self.assertFalse((self.data / "plugins/fex").exists())
         snapshot = self.snapshot()
         self.install()
         self.assertEqual(snapshot, self.snapshot())

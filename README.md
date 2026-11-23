@@ -132,6 +132,7 @@ Each skill is a domain router in `skills/<domain>/SKILL.md`; the optional vault 
 | `design` | `brainstorming` agrees a design before any code. `writing-plans` turns it into a plan. `codebase-design` shapes module interfaces, boundaries and test seams. `domain-modeling` settles domain terms, keeps a glossary and records architecture decisions. `to-tickets` publishes an approved plan as tracker issues or local tickets |
 | `writing` | `prose` drafts or revises anything a person reads, with an evidence pass and a voice pass. `release-notes` turns a changelog entry into user-facing notes. `writing-for-agents` improves `AGENTS.md`, `CLAUDE.md` and other agent-facing documents |
 | `inquiry` | `research` investigates a question across primary sources. `retro` reviews a coding session for recurring mistakes and proposes fixes to the setup |
+| `frontend` | `workflow` runs the create, improve or review pipeline and picks the specialists. `specialist-map` fetches the pinned third-party specialists. `qa-gates` holds the final functional, responsive, accessibility, visual, performance and motion gates |
 | `capabilities` | `reuse` finds and runs the repository's tested capabilities before repeated deterministic work. `extraction` decides whether a finished workflow becomes one. `registry` documents the `capability` script, which tests, promotes, disables and reports them, and refuses to promote on failing tests or secret-looking files |
 | `repo-ops` | `ship` takes changes through branch, gate, pull request and CI, and stops before merge. `desloppify` runs health scans. `repo-bootstrap` sets up `AGENTS.md`, a one-line `CLAUDE.md`, `.agents/skills/` and `AGENTS.local.md`. `makefile-generator` and `pyproject-generator` render a Makefile or `pyproject.toml` from templates |
 
@@ -155,7 +156,6 @@ The third-party plugins are listed in `plugins/manifest.json`:
 | Plugin | Role | Install |
 | --- | --- | --- |
 | Ponytail | smallest complete implementation, YAGNI | native plugin in Codex and Claude Code, skills elsewhere |
-| FEX | frontend design and quality orchestration | native plugin in Codex and Claude Code only |
 | Desloppify | the CLI behind the `desloppify` reference | installed when no `desloppify` executable exists |
 
 - A checkout follows its upstream unless the manifest pins a `ref`, such as `"ref": "v2.1.0"`. The commit each checkout resolved to is recorded in `~/.local/state/agentkit/checkouts.json`.

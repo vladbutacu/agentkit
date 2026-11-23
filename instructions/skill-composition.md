@@ -2,7 +2,7 @@
 
 Several skills can apply to one task. Their kind decides how many run at once.
 
-Agentkit's own skills are domain routers: `design`, `engineering`, `writing`, `inquiry`, `capabilities`, `repo-ops` and `vault`. Each router's `references/` holds the leaves, and the kinds below name leaves, not routers. A router never counts as a workflow. The leaf it routes to does.
+Agentkit's own skills are domain routers: `design`, `engineering`, `writing`, `inquiry`, `capabilities`, `repo-ops`, `frontend` and `vault`. Each router's `references/` holds the leaves, and the kinds below name leaves, not routers. A router never counts as a workflow. The leaf it routes to does.
 
 | Kind | Active at once | Governs | References |
 | --- | --- | --- | --- |
@@ -37,6 +37,7 @@ The user's instructions and `AGENTS.md` come first. Below them, a workflow decid
 | New or unclear work, or pressure-testing an existing plan | `brainstorming` |
 | Domain terms, a glossary or an architecture decision | `domain-modeling` |
 | The task asks for an interface or boundary change | `codebase-design` picks the interface and `ponytail` sizes the code behind it. Otherwise keep the structure the codebase has |
+| The task builds, improves or reviews a user-facing frontend | the `frontend` router's workflow |
 | Finished changes go out as a pull request | `ship`, typed by the user. `branch-hygiene` covers merge, keep or discard when no pull request is wanted |
 | An approved plan becomes tickets | `to-tickets`, after `writing-plans` |
 | Creating or changing a skill | `writing-for-agents`, for wording, invocation and testing the skill against a baseline |
