@@ -1,6 +1,7 @@
 """Guards for the distribution artifacts: plugin manifests, marketplaces and SKILL.md frontmatter."""
 
 import re
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -23,23 +24,58 @@ def skill_roots() -> list[Path]:
     return roots + [path.parent for path in (actions.REPO / "features/obsidian").glob("*/SKILL.md")]
 
 
+BLOCK_SCALARS = {">", ">-", ">+", "|", "|-", "|+"}
+
+
+def fold_block_scalar(body: list[str], folded: bool) -> str:
+    indent = len(body[0]) - len(body[0].lstrip()) if body else 0
+    stripped = [line[indent:] if len(line) > indent else "" for line in body]
+    text = (" " if folded else "\n").join(stripped)
+    return text.strip()
+
+
 def frontmatter(path: Path) -> dict[str, str]:
-    """Top-level frontmatter keys; indented continuation lines belong to their parent."""
+    """Top-level frontmatter keys; block scalar values fold into their key's value."""
     lines = path.read_text(encoding="utf-8").splitlines()
     if not lines or lines[0].strip() != "---":
         raise AssertionError(f"Missing frontmatter block: {path}")
-    fields = {}
+    fields: dict[str, str] = {}
+    block: tuple[str, bool] | None = None
+    body: list[str] = []
     for line in lines[1:]:
         if line.strip() == "---":
+            if block:
+                fields[block[0]] = fold_block_scalar(body, block[1])
             return fields
-        if line[:1].isspace() or ":" not in line:
+        if line[:1].isspace():
+            if block:
+                body.append(line)
             continue
+        if ":" not in line:
+            continue
+        if block:
+            fields[block[0]] = fold_block_scalar(body, block[1])
+            block, body = None, []
         key, _, value = line.partition(":")
-        fields[key.strip()] = value.strip()
+        value = value.strip()
+        if value in BLOCK_SCALARS:
+            block = (key.strip(), value.startswith(">"))
+        else:
+            fields[key.strip()] = value
     raise AssertionError(f"Frontmatter block never closes: {path}")
 
 
 class MetadataChecks(unittest.TestCase):
+    def test_frontmatter_folds_block_scalars(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "SKILL.md"
+            path.write_text(
+                "---\nname: demo\ndescription: >-\n  Use when work repeats.\n  Skip single reads.\n---\n",
+                encoding="utf-8")
+            fields = frontmatter(path)
+        self.assertEqual(fields["name"], "demo")
+        self.assertEqual(fields["description"], "Use when work repeats. Skip single reads.")
+
     def test_plugin_versions_match_release_manifest(self):
         version = actions.read_json(actions.REPO / ".release-please-manifest.json")["."]
         for name in PLUGIN_MANIFESTS:
