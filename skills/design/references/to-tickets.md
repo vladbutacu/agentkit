@@ -27,6 +27,7 @@ Break the work into **tracer bullet** tickets.
 - Each slice cuts a narrow, complete path through every layer (schema, API, UI, tests). A horizontal slice of one layer cannot be demoed or verified alone, so it is not a tracer bullet
 - A completed slice is demoable or verifiable on its own
 - Each slice is sized to fit in a single fresh context window
+- A slice that cannot fail on its own is too small: merge it into its neighbour
 - Any prefactoring should be done first
 
 </vertical-slice-rules>
@@ -55,10 +56,10 @@ Iterate until the user approves the breakdown.
 
 Publish the approved tickets. **How** depends on the agreed project tracker; the tickets are the same either way, only the shape of the blocking edges changes:
 
-- **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the ticket numbers it depends on, such as `01, 03`. Use the per-ticket file template below: one ticket per file, never a single combined file. Then run `python3 scripts/to-tickets/validate_tickets.py <project>/.scratch/<feature-slug>/issues` from this skill's folder, where `<project>` is the absolute path of the project root, and fix every problem it reports. It rejects file paths and code fences, so a prototype snippet inlined under the exception above needs a manual check instead.
+- **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the ticket numbers it depends on, such as `01, 03`. Use the per-ticket file template below: one ticket per file, never a single combined file. Then run `python3 scripts/to-tickets/validate_tickets.py <project>/.scratch/<feature-slug>/issues` from this skill's folder, where `<project>` is the absolute path of the project root, and fix every problem it reports. It rejects file paths and code fences, so a prototype snippet inlined under the exception above needs a manual check instead. Add `.scratch/` to the repository's `.gitignore` before the first ticket.
 - **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. If the source was an existing issue, make each ticket its sub-issue using the tracker's native relationship. Apply the established agent-ready label when one exists; the tickets are agent-grabbable by construction.
 
-Work the **frontier**: any ticket whose blockers are all done. For a purely linear chain that means top to bottom.
+`executing-plans.md` in the `engineering` skill works the **frontier**: for a purely linear chain that means top to bottom.
 
 Leave any parent issue unchanged. Its status is outside what this skill publishes.
 
@@ -74,6 +75,8 @@ Leave any parent issue unchanged. Its status is outside what this skill publishe
 
 - [ ] Acceptance criterion 1
 - [ ] Acceptance criterion 2
+
+**Done:** _appended by the executor: the commits, and one line on what landed_
 
 </local-ticket-template>
 

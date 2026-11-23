@@ -1,7 +1,7 @@
 ---
 name: engineering
 description: >-
-  Use when implementing or changing code, debugging a failure, about to claim work is done, handling review feedback, running an approved plan, or starting or finishing a branch. Enforces test first, root cause first and evidence first.
+  Use when implementing or changing code, debugging a failure, about to claim work is done, handling review feedback, running an approved plan or its published tickets, or starting or finishing a branch. Enforces test first, root cause first and evidence first.
 metadata:
   opencode/autoinvoke: true
 ---
@@ -20,7 +20,7 @@ corresponding file(s)** before taking action.
 | A bug, test failure or unexpected behavior, before proposing a fix | `references/debugging.md` |
 | About to say work is done, fixed or passing, before committing or opening a pull request | `references/verification.md` |
 | Review comments or feedback on your work arrived | `references/receiving-review.md` |
-| Running an approved plan task by task, inline or with subagents | `references/executing-plans.md` |
+| Running an approved plan or its published tickets, task by task, inline or with subagents | `references/executing-plans.md` |
 | Starting work on a branch or worktree, or finishing, merging or discarding one | `references/branch-hygiene.md` |
 
 ## Rules
