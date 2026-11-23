@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.0](https://github.com/vladbutacu/agentkit/compare/v0.14.0...v0.15.0) (2026-11-23)
+
+
+### Features
+
+* fold the frontend excellence plugin into the frontend router ([#39](https://github.com/vladbutacu/agentkit/issues/39)) ([c5ffb60](https://github.com/vladbutacu/agentkit/commit/c5ffb60e9e37073071717c267cb8eb77e931143b))
+
 ## [0.14.0](https://github.com/vladbutacu/agentkit/compare/v0.13.0...v0.14.0) (2026-11-22)
 
 
