@@ -1,5 +1,6 @@
 {
   "name": "agentkit",
+  "description": "Shared agent skills, subagents and rules, delivered to every coding tool on a machine.",
   "owner": { "name": "Vlad Butacu" },
   "plugins": [
     {
