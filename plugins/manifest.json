@@ -7,11 +7,6 @@
     "opencode": ".opencode/plugins",
     "description": "smallest complete implementation, YAGNI discipline"
   },
-  "fex": {
-    "repository": "https://github.com/VladButacu/fex.git",
-    "marketplace": "frontend-excellence",
-    "description": "frontend design and quality orchestration"
-  },
   "desloppify": {
     "repository": "https://github.com/peteromallet/desloppify.git",
     "cli": true,

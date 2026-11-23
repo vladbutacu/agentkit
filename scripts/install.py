@@ -159,7 +159,7 @@ def install(installer: actions.Installer, selected: set[str], requested: str | N
     local = {"skills", "opencode", "cli"}
 
     def plugin_skills(name: str, entry: dict) -> dict[str, Path]:
-        # FEX-style plugins keep their skills namespaced inside the native plugin.
+        # Plugin skills stay namespaced inside the native plugin.
         if not entry.get("skills") or name not in sources:
             return {}
         return actions.skills(sources[name] / entry["skills"])
