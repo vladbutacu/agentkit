@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/vladbutacu/agentkit/compare/v0.15.0...v0.16.0) (2026-11-23)
+
+
+### Features
+
+* record the run mode in plans and make tickets the execution state ([#41](https://github.com/vladbutacu/agentkit/issues/41)) ([6792440](https://github.com/vladbutacu/agentkit/commit/6792440065097ac71dae8f8def580dfc8f355de1))
+
 ## [0.15.0](https://github.com/vladbutacu/agentkit/compare/v0.14.0...v0.15.0) (2026-11-23)
 
 
