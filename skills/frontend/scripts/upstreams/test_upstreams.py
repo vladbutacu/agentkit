@@ -35,13 +35,13 @@ class CliTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             missing = subprocess.run(
                 [sys.executable, str(SCRIPT), "--data-dir", td, "verify"],
-                capture_output=True, text=True,
+                capture_output=True, text=True, check=False,
             )
             self.assertEqual(missing.returncode, 1)
             self.assertIn("\tmissing", missing.stdout)
             unknown = subprocess.run(
                 [sys.executable, str(SCRIPT), "--data-dir", td, "path", "not-a-skill"],
-                capture_output=True, text=True,
+                capture_output=True, text=True, check=False,
             )
             self.assertEqual(unknown.returncode, 2)
             self.assertIn("unknown specialist skill", unknown.stderr)
