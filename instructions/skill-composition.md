@@ -39,7 +39,7 @@ The user's instructions and `AGENTS.md` come first. Below them, a workflow decid
 | The task asks for an interface or boundary change | `codebase-design` picks the interface and `ponytail` sizes the code behind it. Otherwise keep the structure the codebase has |
 | The task builds, improves or reviews a user-facing frontend | the `frontend` router's workflow |
 | Finished changes go out as a pull request | `ship`, typed by the user. `branch-hygiene` covers merge, keep or discard when no pull request is wanted |
-| An approved plan becomes tickets | `to-tickets`, after `writing-plans` |
+| A plan too big for one session or one implementer | `to-tickets`, after `writing-plans`; `executing-plans` then works the frontier and ticks each ticket's criteria |
 | Creating or changing a skill | `writing-for-agents`, for wording, invocation and testing the skill against a baseline |
 | A session that went wrong | `retro`, for evidence with `path:line` and setup changes |
 | A research question | `vault-recall`, then `research` |
