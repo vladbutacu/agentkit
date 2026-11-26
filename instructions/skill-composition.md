@@ -34,10 +34,11 @@ The user's instructions and `AGENTS.md` come first. Below them, a workflow decid
 | Work that alters behavior or ships new surface is about to be reported done | `verification`, whose independent review dispatches a fresh `blind-reviewer` |
 | A one-off codebase audit | `ponytail-audit` |
 | A tracked cleanup with a scored queue | `desloppify` |
+| Complex feature work that meets the trigger in `instructions/global.md` | `feature-work` owns the scratch record and hands off to one workflow step at a time |
 | New or unclear work, or pressure-testing an existing plan | `brainstorming` |
 | Domain terms, a glossary or an architecture decision | `domain-modeling` |
 | The task asks for an interface or boundary change | `codebase-design` picks the interface and `ponytail` sizes the code behind it. Otherwise keep the structure the codebase has |
-| The task builds, improves or reviews a user-facing frontend | the `frontend` router's workflow |
+| The task builds, improves or reviews a user-facing frontend | the `frontend` router's workflow. For complex feature work, use its frontend steps within the stage selected by `feature-work` |
 | Finished changes go out as a pull request | `ship`, typed by the user. `branch-hygiene` covers merge, keep or discard when no pull request is wanted |
 | A plan too big for one session or one implementer | `to-tickets`, after `writing-plans`; `executing-plans` then works the frontier and ticks each ticket's criteria |
 | Creating or changing a skill | `writing-for-agents`, for wording, invocation and testing the skill against a baseline |

@@ -24,4 +24,4 @@ Write a plan from an approved design for an implementer who has the code but not
 5. Proportion: if the plan is several times longer than the change, cut it to the decisions.
 6. The header names the run mode.
 
-The run mode names how the plan executes: `executing-plans.md` in the `engineering` skill runs it inline; `to-tickets.md` publishes it as tickets and `executing-plans.md` works the frontier. Choose tickets when the work spans sessions or implementers; otherwise inline, and inline when unsure.
+The run mode names how the plan executes: `executing-plans.md` in the `engineering` skill runs it inline; `to-tickets.md` publishes it as tickets and `executing-plans.md` works the frontier. Choose tickets when the user asks for them or the work spans sessions or implementers. Otherwise choose inline.

@@ -2,7 +2,7 @@
 
 Convert an approved plan into **tickets** with acceptance criteria and blocking edges. Consume an approved plan here rather than starting another planning workflow; `instructions/skill-composition.md` in the agentkit repository names the planning owner.
 
-Follow the project's existing tracker and label conventions. If none are established, use local Markdown files. Confirm the destination before publishing externally.
+Use local Markdown by default in the feature workflow. For standalone ticket requests, follow the project's existing tracker and label conventions, or use local Markdown if none are established. Confirm the destination before publishing externally.
 
 Do not include specific file paths or code snippets in a ticket: they go stale fast. Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim it to the decision-rich parts.
 
@@ -56,7 +56,7 @@ Iterate until the user approves the breakdown.
 
 Publish the approved tickets. **How** depends on the agreed project tracker; the tickets are the same either way, only the shape of the blocking edges changes:
 
-- **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the ticket numbers it depends on, such as `01, 03`. Use the per-ticket file template below: one ticket per file, never a single combined file. Then run `python3 scripts/to-tickets/validate_tickets.py <project>/.scratch/<feature-slug>/issues` from this skill's folder, where `<project>` is the absolute path of the project root, and fix every problem it reports. It rejects file paths and code fences, so a prototype snippet inlined under the exception above needs a manual check instead. Add `.scratch/` to the repository's `.gitignore` before the first ticket.
+- **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the ticket numbers it depends on, such as `01, 03`. Use the per-ticket file template below: one ticket per file, never a single combined file. Then run `python3 scripts/to-tickets/validate_tickets.py <project>/.scratch/<feature-slug>/issues` from this skill's folder, where `<project>` is the absolute path of the project root, and fix every problem it reports. It rejects file paths and code fences, so a prototype snippet inlined under the exception above needs a manual check instead. Reuse the [feature workflow's ignore convention](feature-work.md).
 - **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. If the source was an existing issue, make each ticket its sub-issue using the tracker's native relationship. Apply the established agent-ready label when one exists; the tickets are agent-grabbable by construction.
 
 `executing-plans.md` in the `engineering` skill works the **frontier**: for a purely linear chain that means top to bottom.
