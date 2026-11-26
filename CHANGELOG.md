@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/vladbutacu/agentkit/compare/v0.16.0...v0.17.0) (2026-11-26)
+
+
+### Features
+
+* track complex feature work from design through verification ([#46](https://github.com/vladbutacu/agentkit/issues/46)) ([81b0ed5](https://github.com/vladbutacu/agentkit/commit/81b0ed5388263abbb37334de42bd1a2b70769a18))
+
 ## [0.16.0](https://github.com/vladbutacu/agentkit/compare/v0.15.0...v0.16.0) (2026-11-23)
 
 
