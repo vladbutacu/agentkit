@@ -16,6 +16,7 @@ corresponding file(s)** before taking action.
 
 | User Intent / Trigger | Reference File to Read |
 | :--- | :--- |
+| Complex feature work that meets the global rules' trigger, or resuming that work | `references/feature-work.md` |
 | New or unclear work, before any code exists: agree the design first | `references/brainstorming.md` |
 | An approved design needs a plan for an implementer | `references/writing-plans.md` |
 | Designing or changing module interfaces, boundaries or test seams, or refactoring tightly coupled code | `references/codebase-design.md` |
